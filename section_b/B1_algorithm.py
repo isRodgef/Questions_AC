@@ -15,7 +15,7 @@ def selection_sort(number_list):
 
 
 if __name__ == '__main__':
-    filename = 'AvoTest/Test/algorithms1.csv'
+    filename = 'algorithms1.csv'
 
     number_list = open(filename, 'r')
     resultant_list = selection_sort(number_list)
