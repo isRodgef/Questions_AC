@@ -1,17 +1,12 @@
 import csv
 
-filename = 'AvoTest/Test/datastructures2.csv'
-
-# improve this code mostly with regards to  speed and structure
+filename = 'datastructures2.csv'
 
 class Fullname:
     def __init__(self, firstname, surname):
         self.firstname = firstname
         self.surname = surname
     def __str__(self) -> str:
-        return self.firstname + " " + self.surname
-
-    def __repr__(self) -> str:
         return self.firstname + " " + self.surname
 
     def __eq__(self, __value: object) -> bool:
@@ -29,9 +24,6 @@ def load_file_list(filename):
         next(reader)
         # iterate over the rows in the csv file
         for row in reader:
-            # Access each element in the row
-            #for value in row:
-            #    print(value)
             name = Fullname(row[0], row[1])
             name_set.add(name) 
     return name_set

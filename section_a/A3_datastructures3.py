@@ -44,11 +44,10 @@ class BinaryTree:
         self.bulk_insert(nodes[:mid])
         self.bulk_insert(nodes[mid+1:])
 
-    def search(self, title):
-        search_node = Node(title)
+    def search(self, search_node):
         current = self.root
         while current:
-            if current.title == title:
+            if current == search_node:
                 return current
             elif search_node < current:
                 current = current.left
@@ -72,19 +71,19 @@ def build_binary_tree(movies):
     return binary_tree
 
 if __name__ == '__main__':
-    movies_file = 'section_a/datastructures3.csv'  
+    movies_file = 'datastructures3.csv'  
     movies = read_movies_from_file(movies_file)
     binary_tree = build_binary_tree(movies)
-    
     search_title = '2nd Amendment: The Right To Bear Arms'
-    result = binary_tree.search(search_title)
+    result = binary_tree.search(Node(search_title))
+    
     if result:
         print(f"Movie found: {result.title}")
     else:
         print("Movie not found")
     
     search_title = "The life story of Rodger Rabbit"
-    result = binary_tree.search(search_title)
+    result = binary_tree.search(Node(search_title))
     if result:
         print(f"Movie found: {result.title}")
     else:
