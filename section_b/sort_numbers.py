@@ -1,18 +1,23 @@
-filename = 'AvoTest/Test/algorithms1.csv'
-resultant_list = []
-with open(filename, 'r') as nummber_list:
-    for row in nummber_list:
+def selection_sort(number_list):
+    resultant_list = []
+    for row in number_list:
         if not resultant_list:
             resultant_list.append(int(row))
         else:
-            for i in range(len(resultant_list)):
-                if int(row) <= resultant_list[i]:
-                    resultant_list.insert(i, int(row))
+            for index, number in enumerate(resultant_list):
+                if int(row) <= resultant_list[index]:
+                    resultant_list.insert(index, int(row))
                     break
-                elif i == len(resultant_list) - 1:
+                elif index == len(resultant_list) - 1:
                     resultant_list.append(int(row))
                     break
+    return resultant_list
 
 
+if __name__ == '__main__':
+    filename = 'AvoTest/Test/algorithms1.csv'
 
-print(resultant_list)
+    number_list = open(filename, 'r')
+    resultant_list = selection_sort(number_list)
+    print(resultant_list)
+    number_list.close()
