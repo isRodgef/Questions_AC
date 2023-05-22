@@ -1,0 +1,78 @@
+### Question 
+
+Given a string of digits in a file, work out the sum of the numbers.
+
+### Answer file
+
+C1_research.py
+
+### How to run 
+
+python C1_research.py
+
+### Approach
+
+- Set a total to 0
+- Iterate through a list
+- cast to an int
+- add to total
+- Return Total
+
+### Question 
+
+When you misspell a word in Google, Google often corrects your spelling. Google uses a statistical based neural network to accomplish this. Neural networks are beyond the scope of this test. You would like to implement a similar feature in an app you design. Since you do not have as much training data as Google has, you instead decide to use a different method of searching. After careful consideration, you decide to either search using fuzzy logic or using a phonetic algorithm. Your task is to either implement a fuzzy search algorithm or a phonetic algorithm based on a dictionary of words. You will be marked on performance. GUI is not needed and will receive no marks for it.
+
+### Answer file
+
+Clvl2_research.py.py
+
+### How to run 
+
+python section_c/Clvl2_research.py
+
+### Approach
+
+- Levenshtein distance algorithm,
+    - set up a matrix of str1_len+1  x str2_len+1
+    - each is the minium number of changes required to get the corresponding substring
+    - It uses 3 metrics to calculate the minium edit distance
+        - for insertion it compares how many characters are needed to insert into s1 to form s2
+        - for deleteion it compares how many  characters are needed to delete into s1 to form s2
+        - for substituion it compares how are subsited from s1 into s2
+
+- Fuzzy logic threshold is set to 2
+
+- Example word is compared to list and all values with distances less than 2 are added to a list and returned
+
+## Additional note:
+
+- The initial distance calculator looked as follows  see recursive implemenation below
+- I kept running a recursion depth issue
+```
+def levenshtein_distance(s1, s2):
+    # Base cases
+    if len(s1) == 0:
+        return len(s2)
+    if len(s2) == 0:
+        return len(s1)
+    
+    # Calculate the cost of the last character
+    cost = 0 if s1[-1] == s2[-1] else 1
+    
+    # Recursive calls
+    deletion = levenshtein_distance(s1[:-1], s2) + 1
+    insertion = levenshtein_distance(s1, s2[:-1]) + 1
+    substitution = levenshtein_distance(s1[:-1], s2[:-1]) + cost
+    
+    #return substitution
+    # Return the minimum of the three operations
+    return min(deletion, insertion, substitution)
+'''
+
+Here are some links I used for this question:
+
+https://medium.com/analytics-vidhya/fuzzy-matching-in-python-2def168dee4a
+
+https://blog.paperspace.com/implementing-levenshtein-distance-word-autocomplete-autocorrect/
+
+https://towardsdatascience.com/text-similarity-w-levenshtein-distance-in-python-2f7478986e75
