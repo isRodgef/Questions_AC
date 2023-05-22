@@ -2,7 +2,9 @@ import math
 
 
 def atkin(limit):
-    """ Returns a list of prime numbers below the limit """
+    """
+        Returns a list of prime numbers below the limit
+    """
     results = [2,3]
     sieve = [False] * limit
     for x in range(1, int(math.sqrt(limit))+1):
@@ -26,4 +28,6 @@ def atkin(limit):
     return results
 
 if __name__ == '__main__':
-    print(sum(atkin(2000000)))
+    print ("Sum of all primes below 4", sum(atkin(4)))
+    print("Sum of all primes below 2000000", sum(atkin(2000000)))
+    print("Sum of all primes below 10", sum(atkin(10)))

@@ -1,4 +1,7 @@
 def froogon_representation(n):
+    """
+        Returns the froggon represntation
+    """
     factorial_list = [1]
     i = 2
     while factorial_list[0] <= n:
