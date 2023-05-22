@@ -24,3 +24,6 @@ def atkin(limit):
         if sieve[p]:
             results.append(p)
     return results
+
+if __name__ == '__main__':
+    print(sum(atkin(2000000)))
